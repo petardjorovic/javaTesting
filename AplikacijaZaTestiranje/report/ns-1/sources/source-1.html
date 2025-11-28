@@ -1,0 +1,195 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Student</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">rs.ac.singidunum.fir.testiranje_softvera</a>
+</div>
+
+<h1>Coverage Summary for Class: Student (rs.ac.singidunum.fir.testiranje_softvera)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Student</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (17/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package rs.ac.singidunum.fir.testiranje_softvera;
+&nbsp;
+&nbsp;import java.util.LinkedList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;public class Student {
+&nbsp;    private final String ime;
+&nbsp;    private final String prezime;
+&nbsp;    private final String brojIndeksa;
+&nbsp;    private final List&lt;Test&gt; radjeniTestovi;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Konstruise objekat klase Student sa svim potrebnim podacima
+&nbsp;     * @param ime Ime studenta
+&nbsp;     * @param prezime Prezime studenta
+&nbsp;     * @param brojIndeksa Broj indeksa studenta
+&nbsp;     */
+<b class="fc">&nbsp;    public Student(String ime, String prezime, String brojIndeksa) {</b>
+<b class="fc">&nbsp;        this.ime = ime;</b>
+<b class="fc">&nbsp;        this.prezime = prezime;</b>
+<b class="fc">&nbsp;        this.brojIndeksa = brojIndeksa;</b>
+<b class="fc">&nbsp;        this.radjeniTestovi = new LinkedList&lt;&gt;();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca podatak o imenu studenta
+&nbsp;     * @return Ime studenta
+&nbsp;     */
+&nbsp;    public String getIme() {
+<b class="fc">&nbsp;        return ime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca podatak o prezimenu studenta
+&nbsp;     * @return Prezime studenta
+&nbsp;     */
+&nbsp;    public String getPrezime() {
+<b class="fc">&nbsp;        return prezime;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca podatak o broju indeksa studenta
+&nbsp;     * @return Broj indeksa studenta
+&nbsp;     */
+&nbsp;    public String getBrojIndeksa() {
+<b class="fc">&nbsp;        return brojIndeksa;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Dodaje u evidenciju ovog studenta test koji je radio
+&nbsp;     * @param radjeniTest Objekat klase test koji sadrzi podatke o radjenom testu
+&nbsp;     */
+&nbsp;    public void evidentirajRadjeniTest(Test radjeniTest) {
+<b class="fc">&nbsp;        this.radjeniTestovi.add(radjeniTest);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca broj poena na poslednjem radjenom testu (po datumu) za odredjeni
+&nbsp;     * predmet cije ime je dato kao argument metoda. Ako student nikada nije
+&nbsp;     * radio ni jedan test za ovaj predmet, metod vraca 0.
+&nbsp;     * @param predmet Ime predmeta za koji se trazi broj poena na poslednjem radjenom testu
+&nbsp;     * @return Broj poena na poslednjem radjenom testu za trazeni predmet ili 0 ako nikada nije radjen ni jedan test za taj predmet
+&nbsp;     */
+&nbsp;    public double getBrojPoenaZaPredmet(String predmet) {
+<b class="fc">&nbsp;        final Optional&lt;Test&gt; najnoviji =</b>
+&nbsp;            this.radjeniTestovi
+<b class="fc">&nbsp;                .stream()</b>
+<b class="fc">&nbsp;                .filter(test -&gt; test.getImePredmeta().equals(predmet))</b>
+<b class="fc">&nbsp;                .sorted((r1, r2) -&gt; r2.getDatumIso().compareTo(r1.getDatumIso()))</b>
+<b class="fc">&nbsp;                .findFirst();</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!najnoviji.isPresent()) {</b>
+<b class="fc">&nbsp;            return 0.;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return najnoviji.get().getBrojPoena(30);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-28 19:00</div>
+</div>
+</body>
+</html>

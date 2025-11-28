@@ -1,0 +1,200 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Test</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">rs.ac.singidunum.fir.testiranje_softvera</a>
+</div>
+
+<h1>Coverage Summary for Class: Test (rs.ac.singidunum.fir.testiranje_softvera)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Test</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package rs.ac.singidunum.fir.testiranje_softvera;
+&nbsp;
+&nbsp;public class Test {
+&nbsp;    final private String imePredmeta;
+&nbsp;    final private String datumIso;
+&nbsp;    final private int brojPitanja;
+&nbsp;    final private int brojTacnihOdgovora;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Konstruise objekat koji sadrzi podatke o testi, medju kojima su ime predmeta,
+&nbsp;     * datum u ISO formatu, broj pitanja na testu kao i broj tacno odgovorenih pitanja.
+&nbsp;     * Konstruktor ne dozvoljava setovanje broja pitanja na vrednost manju od 1, a
+&nbsp;     * broj tacno odgovorenih pitanja ne moze biti vrednost manja od 0.
+&nbsp;     * Za vrednosti imena predmeta i broja indeksa, koje su tekstualne, ne postoje ogranicenja.
+&nbsp;     * @param imePredmeta Tekstualni podatak koji predstavlja ime predmeta
+&nbsp;     * @param datumIso Tekstualni podatak koji predstavlja datum u ISO formatu
+&nbsp;     * @param brojPitanja Ceo broj, ne manji od 1, koji predstavlja broj pitanja na testu
+&nbsp;     * @param brojTacnihOdgovora Ceo broj, ne manji od 0, koji predstavlja broj tacno odgvoorenih pitanja
+&nbsp;     */
+<b class="fc">&nbsp;    public Test(String imePredmeta, String datumIso, int brojPitanja, int brojTacnihOdgovora) {</b>
+<b class="fc">&nbsp;        this.imePredmeta = imePredmeta;</b>
+<b class="fc">&nbsp;        this.datumIso = datumIso;</b>
+<b class="fc">&nbsp;        this.brojPitanja = Math.max(1, brojPitanja);</b>
+<b class="fc">&nbsp;        this.brojTacnihOdgovora = Math.max(0, brojTacnihOdgovora);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca ime predmeta
+&nbsp;     * @return Ime predmeta
+&nbsp;     */
+&nbsp;    public String getImePredmeta() {
+<b class="fc">&nbsp;        return imePredmeta;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca datum test
+&nbsp;     * @return Datum test
+&nbsp;     */
+&nbsp;    public String getDatumIso() {
+<b class="fc">&nbsp;        return datumIso;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca broj pitanja na testu
+&nbsp;     * @return Broj pitanja na testu
+&nbsp;     */
+&nbsp;    public int getBrojPitanja() {
+<b class="fc">&nbsp;        return brojPitanja;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca broj tacno odgovorenih pitanja na testu
+&nbsp;     * @return Broj tacno odgovorenih pitanja na testu
+&nbsp;     */
+&nbsp;    public int getBrojTacnihOdgovora() {
+<b class="fc">&nbsp;        return brojTacnihOdgovora;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca realnu vrednost od 0 do 100 koja predstavlja procenat
+&nbsp;     * tacno odgovorenih pitanja u odnosu na ukupan broj pitanja
+&nbsp;     * @return Procenat tacno odgovorenih pitanja
+&nbsp;     */
+&nbsp;    public double getProcenatTacnihOdgovora() {
+<b class="fc">&nbsp;        return 100. * brojTacnihOdgovora / brojPitanja;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Vraca broj poena ostvarenih na testu izracunat na osnovu procenta
+&nbsp;     * tacno odgovorenih pitanja i maksimalnog broja poena koliko
+&nbsp;     * vredi test, tako da za 100% tacan test vrati maksimum broja poena
+&nbsp;     * @param maksimum Koliko poena vredi 100% tacno uradjen test
+&nbsp;     * @return Broj poena ostvarenih na testu
+&nbsp;     */
+&nbsp;    public double getBrojPoena(int maksimum) {
+<b class="fc">&nbsp;        return 0.01 * maksimum * getProcenatTacnihOdgovora();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Simbolom ; (tacka zarez) razdvojene vrednosti podataka o testu i to:
+&nbsp;     * ime predmeta, broj tacnih odgovora, broj pitanja i rocenat tacnih
+&nbsp;     * odgovora zaokruzen na dve decimale.
+&nbsp;     * @return Tekstualni prikaz podataka o testu, razdvojenih sa ; (tacka zarez)
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return String.format(</b>
+&nbsp;            &quot;%s;%s;%d;%d;%.2f&quot;,
+&nbsp;            imePredmeta,
+&nbsp;            datumIso,
+<b class="fc">&nbsp;            brojTacnihOdgovora,</b>
+<b class="fc">&nbsp;            brojPitanja,</b>
+<b class="fc">&nbsp;            getProcenatTacnihOdgovora()</b>
+&nbsp;        );
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-28 19:00</div>
+</div>
+</body>
+</html>
