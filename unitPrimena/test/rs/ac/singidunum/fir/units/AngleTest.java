@@ -120,9 +120,129 @@ public class AngleTest {
 
     @Test
     public void toGradientsForAnAngleCreatedTestFromSecondsOfArk() {
-        Angle a = Angle.fromRadians(5.0);
+        Angle a = Angle.fromSecondsOfArk(5.0);
         double expected = 5.0 * (1 / 4000.);
         double actual = a.toGradients();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toMinutesOfArkForAnAngleCreatedTestFromDegrees() {
+        Angle a = Angle.fromDegrees(5.0);
+        double expected = 5.0 * 60.;
+        double actual = a.toMinutesOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toMinutesOfArkForAnAngleCreatedTestFromGradients() {
+        Angle a = Angle.fromGradients(5.0);
+        double expected = 5.0 / (1.0 / 54.0);
+        double actual = a.toMinutesOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toMinutesOfArkForAnAngleCreatedTestFromMinutesOfArk() {
+        Angle a = Angle.fromMinutesOfArk(5.0);
+        double expected = 5.0;
+        double actual = a.toMinutesOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toMinutesOfArkForAnAngleCreatedTestFromRadians() {
+        Angle a = Angle.fromRadians(5.0);
+        double expected = 5.0 * (180.0 / Math.PI) * 60.0;
+        double actual = a.toMinutesOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toMinutesOfArkForAnAngleCreatedTestFromSecondsOfArk() {
+        Angle a = Angle.fromSecondsOfArk(5.0);
+        double expected = 5.0 / 60.;
+        double actual = a.toMinutesOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toRadiansForAnAngleCreatedTestFromDegrees() {
+        Angle a = Angle.fromDegrees(5.0);
+        double expected = Math.toRadians(5.0);
+        double actual = a.toRadians();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toRadiansForAnAngleCreatedTestFromGradients() {
+        Angle a = Angle.fromGradients(5.0);
+        double expected = 5.0 / (200. / Math.PI);
+        double actual = a.toRadians();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toRadiansForAnAngleCreatedTestFromMinutesOfArk() {
+        Angle a = Angle.fromMinutesOfArk(5.0);
+        double expected = Math.toRadians(5.0 / 60.);
+        double actual = a.toRadians();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toRadiansForAnAngleCreatedTestFromRadians() {
+        Angle a = Angle.fromRadians(5.0);
+        double expected = 5.0;
+        double actual = a.toRadians();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toRadiansForAnAngleCreatedTestFromSecondsOfArk() {
+        Angle a = Angle.fromSecondsOfArk(5.0);
+        double expected = Math.toRadians(5.0 / 3600.);
+        double actual = a.toRadians();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toSecondsOfArkForAnAngleCreatedTestFromDegrees() {
+        Angle a = Angle.fromDegrees(5.0);
+        double expected = 5.0 * 3600.;
+        double actual = a.toSecondsOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toSecondsOfArkForAnAngleCreatedTestFromGradients() {
+        Angle a = Angle.fromGradients(5.0);
+        double expected = 5.0 * 3240.;
+        double actual = a.toSecondsOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toSecondsOfArkForAnAngleCreatedTestFromMinutesOfArk() {
+        Angle a = Angle.fromMinutesOfArk(5.0);
+        double expected = 5.0 * 60.;
+        double actual = a.toSecondsOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toSecondsOfArkForAnAngleCreatedTestFromRadians() {
+        Angle a = Angle.fromRadians(5.0);
+        double expected = Math.toDegrees(5.0) * 3600.;
+        double actual = a.toSecondsOfArk();
+        Assertions.assertEquals(expected, actual, DELTA);
+    }
+
+    @Test
+    public void toSecondsOfArkForAnAngleCreatedTestFromSecondsOfArk() {
+        Angle a = Angle.fromSecondsOfArk(5.0);
+        double expected = 5.0;
+        double actual = a.toSecondsOfArk();
         Assertions.assertEquals(expected, actual, DELTA);
     }
 }
